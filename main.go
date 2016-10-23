@@ -4,6 +4,7 @@ import (
 	"errors"
 	"net/http"
 	"net/http/cookiejar"
+	"net/url"
 )
 
 // Client represents a unfurl client instance
@@ -58,7 +59,15 @@ func (c *Client) Process(in string) (string, error) {
 				return "", ErrTooManyRedirects
 			}
 			hops++
-			in = resp.Header["Location"][0]
+			base, err := url.Parse(in)
+			if err != nil {
+				return "", err
+			}
+			next, err := url.Parse(resp.Header["Location"][0])
+			if err != nil {
+				return "", err
+			}
+			in = base.ResolveReference(next).String()
 			continue
 		} else {
 			return resp.Request.URL.String(), nil
