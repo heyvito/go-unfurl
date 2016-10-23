@@ -18,6 +18,8 @@ type Options struct {
 	// MaxHops defines how many redirects the client can suffer before returning
 	// an error
 	MaxHops int
+	// UserAgent defines the UserAgent value used by the underlying http client
+	UserAgent *string
 }
 
 // ErrTooManyRedirects indicates that the unfurl client has archieved the
@@ -40,6 +42,7 @@ func NewClientWithOptions(opts Options) Client {
 // NewClient returns a new instance of a Client using the default values for
 // the settings parameters.
 // (MaxHops: 20)
+// (UserAgent: nil)
 func NewClient() Client {
 	return NewClientWithOptions(Options{MaxHops: 20})
 }
@@ -50,7 +53,14 @@ func (c *Client) Process(in string) (string, error) {
 	c.httpClient.Jar = jar
 	hops := 0
 	for {
-		resp, err := c.httpClient.Get(in)
+		req, err := http.NewRequest("GET", in, nil)
+		if err != nil {
+			return "", err
+		}
+		if c.options.UserAgent != nil {
+			req.Header.Set("User-Agent", *c.options.UserAgent)
+		}
+		resp, err := c.httpClient.Do(req)
 		if err != nil {
 			return "", err
 		}

@@ -49,10 +49,10 @@ func TestMaxHops(t *testing.T) {
 	c := NewClientWithOptions(Options{MaxHops: 0})
 	_, err := c.Process("http://j.mp/Y4seGv")
 	if err == nil {
-		t.Error("Expecting an TooManyRedirects erro")
+		t.Error("Expecting an TooManyRedirects error")
 	}
 	if err != ErrTooManyRedirects {
-		t.Error("Expecting an TooManyRedirects erro")
+		t.Error("Expecting an TooManyRedirects error")
 	}
 }
 
@@ -60,6 +60,18 @@ func TestGoErrors(t *testing.T) {
 	c := NewClientWithOptions(Options{MaxHops: 0})
 	_, err := c.Process("http://thisdomaindoesnotexist.nope")
 	if err == nil {
-		t.Error("Expecting an TooManyRedirects erro")
+		t.Error("Expecting an underlying http error")
+	}
+}
+
+func TestUserAgent(t *testing.T) {
+	ua := "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:51.0) Gecko/20100101 Firefox/51.0"
+	c := NewClientWithOptions(Options{
+		MaxHops:   20,
+		UserAgent: &ua,
+	})
+	_, err := c.Process("http://j.mp/Y4seGv")
+	if err != nil {
+		t.Error(err)
 	}
 }
