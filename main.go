@@ -64,6 +64,7 @@ func (c *Client) Process(in string) (string, error) {
 		if err != nil {
 			return "", err
 		}
+		defer resp.Body.Close()
 		if _, ok := resp.Header["Location"]; ok && resp.StatusCode/100.0 == 3 {
 			if hops >= c.options.MaxHops {
 				return "", ErrTooManyRedirects
