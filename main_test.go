@@ -7,11 +7,11 @@ import (
 
 var testData = map[string]map[string]string{
 	"bitly": {
-		"http://j.mp/Y4seGv":    "http://www.nytimes.com/2013/03/11/world/asia/karzai-accuses-us-and-taliban-of-colluding-in-afghanistan.html?ref=global-home&_r=0",
+		"http://j.mp/Y4seGv":    "http://www.nytimes.com/2013/03/11/world/asia/karzai-accuses-us-and-taliban-of-colluding-in-afghanistan.html?ref=global-home",
 		"http://bit.ly/1T1Hul6": "http://www.polygon.com/2015/11/18/9757114/fallout-4-vault-tec-phone-call",
 	},
 	"t.co": {
-		"http://t.co/bxPFQgZ1AV":  "http://www.nytimes.com/2013/03/14/crosswords/bridge/bridge-spring-north-american-championships.html?partner=rss&emc=rss&_r=0",
+		"http://t.co/bxPFQgZ1AV":  "http://www.nytimes.com/2013/03/14/crosswords/bridge/bridge-spring-north-american-championships.html?partner=rss&emc=rss",
 		"https://t.co/SlINea0uWD": "https://github.com/lyst/MakingLyst/blob/master/mobile/ios/coding-standards/style-guide.md",
 	},
 	"tinyurl": {
