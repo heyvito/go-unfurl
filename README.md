@@ -1,7 +1,7 @@
 # go-unfurl
 [![Build Status](https://travis-ci.org/victorgama/go-unfurl.svg?branch=master)](https://travis-ci.org/victorgama/go-unfurl)
 [![Go Report Card](https://goreportcard.com/badge/github.com/victorgama/go-unfurl)](https://goreportcard.com/report/github.com/victorgama/go-unfurl)
-[![Coverage Status](https://coveralls.io/repos/github/victorgama/go-unfurl/badge.svg?branch=master)](https://coveralls.io/github/victorgama/go-unfurl?branch=master)
+[![codecov](https://codecov.io/gh/victorgama/go-unfurl/branch/master/graph/badge.svg)](https://codecov.io/gh/victorgama/go-unfurl)
 [![GoDoc](https://godoc.org/github.com/victorgama/go-unfurl?status.svg)](https://godoc.org/github.com/victorgama/go-unfurl)
 
 **go-unfurl** is a simple library that follow all redirects of a given URL.
