@@ -5,8 +5,7 @@ go:
 
 script:
   - go get golang.org/x/tools/cmd/cover
-  - go get github.com/mattn/goveralls
-  - go test -v -covermode=count -coverprofile=coverage.out
+  - go test -v -covermode=atomic -coverprofile=coverage.txt
 
 after_success:
-- goveralls -coverprofile=coverage.out -service=travis-ci -repotoken 4PEkhI1ETIq0cItOm0eNkhh7R206LhhRY
+  - bash <(curl -s https://codecov.io/bash)
